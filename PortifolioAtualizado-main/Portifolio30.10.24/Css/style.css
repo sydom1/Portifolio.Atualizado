@@ -1,0 +1,272 @@
+:root {
+    --cor-texto: #fff;
+    --cor-transicao: #D91656;
+    --fonte-principal: 'Franklin Gothic Medium';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-image: url(/Portifolio30.10.24/img/fundo-rede.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navegador */
+
+.cabecalho__menu {
+    display: flex;
+    gap: 2em;
+    justify-content: flex-end;
+}
+
+.cabecalho__menu__logo {
+    margin-right: auto;
+}
+
+.cabecalho__menu-link {
+    text-decoration: none;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-top: 1rem;
+    color: var(--cor-texto);
+    font-family: var(--fonte-principal);
+}
+
+.cabecalho__menu-link:hover {
+    color: var(--cor-transicao);
+}
+
+/* Apresentação */
+.apresentacao {
+    display: flex;
+    margin: 0 3%;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.apresentacao__conteudo {
+    flex: 1; 
+    margin-right:40px;
+}
+
+.apresentacao__conteudo__texto {
+    color: var(--cor-texto);
+    font-size: 50px;
+    gap: 1em;
+    margin-top: 25%;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+strong {
+    color: var(--cor-transicao);
+}
+
+.invisivel {
+    opacity: 0;
+    animation: fadeIn 3s forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Mantendo o layout em 3 colunas */
+    grid-gap: 15px;
+    width: 35%; /*0 largura disponível do container */
+    margin: 50px auto;
+    padding: 25px;
+}
+
+.card {
+    width: 100%; /* O card agora se ajusta à largura da célula da grid */
+    height: 150px; /* Altura dos cards */
+    position: relative;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo_img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover; /* A imagem preenche o card */
+    transition: transform 0.5s ease;
+    margin: 10px;
+}
+
+.card:hover .logo_img {
+    transform: scale(1.05); /* Efeito de hover para aumentar um pouco a imagem */
+}
+
+.info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    opacity: 0; /* Invisível por padrão */
+    transition: opacity 0.5s ease, font-size 0.5s ease;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.card.active .logo_img {
+    opacity: 0; /* Esconde a imagem ao ativar o card */
+}
+
+.card.active .info {
+    opacity: 1; /* Mostra o texto */
+    font-size: 24px; /* Ajusta o tamanho do texto */
+}
+
+.card-container.expanded {
+    grid-template-columns: 1fr; /* Quando expandido, o conteúdo ocupa uma única coluna */
+}
+
+.card.active {
+    grid-column: 1 / -1; /* O card ativo ocupa toda a largura do grid */
+    height: auto; /* O card aumenta de altura para ajustar o conteúdo */
+}
+
+.card.inactive {
+    display: none; /* Esconde os outros cards */
+}
+
+.apresentação__conteudo-paragrafo {
+    color: var(--cor-texto);
+    font-size: 20px;
+    gap: 1em;
+    margin-top: 5%;
+    padding-right: 5%;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.imagem__principal {
+    width: 40%;
+   
+    margin: auto;
+    justify-content: end;
+}
+
+.imagem__arredondada {
+    border-radius: 50%;
+}
+
+/* Projetos*/
+/* Estilos dos cards */
+
+.apresentacao_card {
+    max-width: 1000px;
+    position: relative;
+    background-color: #eceaea;
+    display: flex;
+    gap: 20px;
+    border-radius: 8px;
+    justify-content: space-between;
+    margin: 10px auto;
+    width: 350px;  /* Largura do card */
+    height: 300px; /* Altura do card */
+    box-shadow: 0px 4px 8px rgba(238, 24, 24, 0.1);
+    cursor: pointer;
+}
+
+.apresentacao_card_cards {
+    width: 90%;
+    margin: 110px auto;
+    background-color: #ccc;
+   transform: rotate(-28deg);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    transition: 1s;
+}
+
+.apresentacao_card_cards:hover {
+    color: var(--cor-transicao);
+    transform: rotate(0deg);
+}
+
+
+/* Botões */
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.btn__Contato {
+    color: #fff;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.btn__Contato__links {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn__Contato__links-titulo {
+    font-size: 50px;
+    font-family: var(--fonte-principal);
+    margin-bottom: 25px;
+    margin-top: 10%;
+}
+
+.btn__Contato__links-link {
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    width: 50%;
+    background-color: var(--cor-transicao);
+    border: 2px solid var(--cor-transicao);
+    text-decoration: none;
+    font-family: var(--fonte-principal);
+    padding: 10px;
+    border-radius: 8px;
+    color: var(--cor-texto);
+}
+
+.btn__Contato__links-link:hover {
+    background-color: #5c1a30;
+}
+
+/* Rodapé */
+.rodape {
+    color: var(--cor-texto);
+    padding: 1em 0;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 6%;
+    font-family: var(--fonte-principal);
+}    
+
+/*Navegador mobile*/
